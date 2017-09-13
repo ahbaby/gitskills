@@ -1,4 +1,8 @@
 learn to push
 git config --global color.ui true
 create a branch called dev
+<<<<<<< HEAD
 "git push origin :dev" to delete remote branch dev and merge conflicts
+=======
+"git push origin :dev" to delete remote branch dev d-_-b
+>>>>>>> dev
