@@ -5,6 +5,7 @@
     this is a learning on PHP objects.
 */
 
+@require_once(dirname(__FILE__).'/shopProduct.php');
 
 class bookProduct extends shopProduct{
 	public $numPages;
