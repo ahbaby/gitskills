@@ -19,6 +19,7 @@ class shopProduct{
 		$this->price = $price;
 
 		$this->checkPrice();
+		//var_dump($this);
 	}
 
 	public function getProducer(){
