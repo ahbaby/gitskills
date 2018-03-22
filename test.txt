@@ -6,5 +6,4 @@ learn to use Sourcetree and modify in Windows
 learn to push branch
 add new server
 
-
-more ..
+test git stash
