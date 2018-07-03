@@ -1,2 +1,4 @@
+!.gitignore
 /temp
 sftp-config.json
+/test
