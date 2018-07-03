@@ -48,6 +48,30 @@ class cdProduct extends shopProduct{
     }
 }
 
+class beta {
+
+    //数组转xml
+    function _getXMLFromArray($data)
+    {
+        $lineFeed = "";
+        $str = "";
+        foreach($data as $key => $value){
+            $key = strtoupper($key);
+            if(!is_array($value)){
+                $str.="<{$key}>$value</{$key}>{$lineFeed}";
+            }else{
+                if(isset($value[0])){
+                    foreach($value as $v){
+                        $str.= "<{$key}>".$this->_getXMLFromArray($v)."</{$key}>{$lineFeed}";
+                    }
+                }else {
+                    $str .= "<{$key}>{$lineFeed}{$this->_getXMLFromArray($value)}</{$key}>{$lineFeed}";
+                }
+            }
+        }
+        return $str;
+    }    
+}
 
 $producer1 = new shopProduct('My Antonia','Willa','Cather',5.99);
 $book1 = new bookProduct('Xenoblade','cw','Alex',100,'66p');
@@ -65,3 +89,26 @@ echo "<br>";
 print("{$cd1->getSummaryLine()}");
 echo "<br>";
 print("{$cd2->getSummaryLine()}");
+
+
+$test = array(
+array('bn'=>'aa','store'=>'10','branch_id'=>'1'),
+array('bn'=>'bb','store'=>'20','branch_id'=>'1'),
+);
+
+$json = json_encode($test);
+echo "<br>";
+echo $json;
+
+
+$tt = unserialize('a:1:{s:10:"RESULTList";a:1:{i:0;a:3:{s:6:"Result";s:1:"F";s:11:"Description";s:28:"错误：客户tb01不存在";s:9:"ReceiptNo";N;}}}');
+echo "<br>";
+//echo "<pre>";
+var_dump($tt);
+
+$beta = new beta();
+$sdf = array('a1'=>'AA','b2'=>'BB');
+$xml = $beta->_getXMLFromArray($sdf);
+print("{$xml}");
+//echo "<pre>";
+var_dump($xml);
